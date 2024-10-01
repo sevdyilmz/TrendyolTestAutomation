@@ -71,27 +71,35 @@ public class LoginTestsBaseTestData extends BaseTest {
     public void MinMaxCharacterControl() throws InterruptedException {
 
 
-        
-        driver.findElement(By.id("login-email")).sendKeys("a");
-        driver.findElement(By.id("login-password-input")).sendKeys("a");
-        driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).submit();
-        Thread.sleep(3000);
-        String value = driver.findElement(By.id("error-box-wrapper")).getText();
-        System.out.println(value);
+        login.fillMail("a")
+                .fillPassword("a")
+                .clickLoginButton();
+        //driver.findElement(By.id("login-email")).sendKeys("a");
+        //driver.findElement(By.id("login-password-input")).sendKeys("a");
+        //driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).submit();
+        sleep(3000);
+        String value = login.getErrorMessage();
         assertEquals("Lütfen geçerli bir e-posta adresi giriniz.", value);
+
         driver.findElement(By.id("login-email")).clear();
-        driver.findElement(By.id("login-email")).sendKeys(mail);
-        driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).submit();
-        Thread.sleep(3000);
-        String value1 = driver.findElement(By.id("error-box-wrapper")).getText();
-        System.out.println(value1);
+        login.fillMail(mail)
+                .clickLoginButton();
+        //driver.findElement(By.id("login-email")).sendKeys(mail);
+        //driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).submit();
+        sleep(3000);
+        String value1=login.getErrorMessage();
+        //String value1 = driver.findElement(By.id("error-box-wrapper")).getText();
+        //System.out.println(value1);
         assertEquals("E-posta adresiniz ve/veya şifreniz hatalı.", value1);
         driver.findElement(By.id("login-password-input")).clear();
-        driver.findElement(By.id("login-password-input")).sendKeys(password);
-        driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).submit();
-        Thread.sleep(3000);
-        String value2 = driver.findElement(By.cssSelector("[class='link account-user'] p")).getText();
-        System.out.println(value2);
+        login.fillPassword(password)
+                        .clickLoginButton();
+        //driver.findElement(By.id("login-password-input")).sendKeys(password);
+        //driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).submit();
+        sleep(3000);
+        String value2=mainPage.getAccountName();
+        //String value2 = driver.findElement(By.cssSelector("[class='link account-user'] p")).getText();
+       // System.out.println(value2);
         assertEquals("Hesabım", value2);
 
     }
