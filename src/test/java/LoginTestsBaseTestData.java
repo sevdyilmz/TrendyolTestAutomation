@@ -99,7 +99,7 @@ public class LoginTestsBaseTestData extends BaseTest {
         sleep(3000);
         String value2=mainPage.getAccountName();
         //String value2 = driver.findElement(By.cssSelector("[class='link account-user'] p")).getText();
-       // System.out.println(value2);
+        //System.out.println(value2);
         assertEquals("Hesabım", value2);
 
     }
