@@ -1,5 +1,7 @@
 package Base;
 
+import org.testng.Assert;
+
 public class BaseLibrary extends TestData {
 
     public void sleep(int millis) throws InterruptedException {
@@ -7,9 +9,7 @@ public class BaseLibrary extends TestData {
         Thread.sleep(millis);
 
     }
-
     public void assertEquals(String actual, String expected){
-
-        assertEquals(actual, expected);
+        Assert.assertEquals(actual, expected);
     }
 }
