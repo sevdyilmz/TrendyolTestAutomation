@@ -81,7 +81,7 @@ public class LoginTestsBaseTestData extends BaseTest {
         String value = login.getErrorMessage();
         assertEquals("Lütfen geçerli bir e-posta adresi giriniz.", value);
 
-        driver.findElement(By.id("login-email")).clear();
+        //driver.findElement(By.id("login-email")).clear();
         login.fillMail(mail)
                 .clickLoginButton();
         //driver.findElement(By.id("login-email")).sendKeys(mail);
@@ -91,7 +91,7 @@ public class LoginTestsBaseTestData extends BaseTest {
         //String value1 = driver.findElement(By.id("error-box-wrapper")).getText();
         //System.out.println(value1);
         assertEquals("E-posta adresiniz ve/veya şifreniz hatalı.", value1);
-        driver.findElement(By.id("login-password-input")).clear();
+        //driver.findElement(By.id("login-password-input")).clear();
         login.fillPassword(password)
                         .clickLoginButton();
         //driver.findElement(By.id("login-password-input")).sendKeys(password);
