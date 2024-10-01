@@ -42,14 +42,13 @@ public class LoginTestsBaseTestData extends BaseTest {
     public void LoginRequiredControlEmail() throws InterruptedException {
 
 
-        driver.findElement(By.id("onetrust-accept-btn-handler")).click();
-        Thread.sleep(3000);
+        login.fillMail("shdgd")
+                .fillPassword(password)
+                .clickLoginButton();
         //driver.findElement(By.id("login-email")).sendKeys("");
         //driver.findElement(By.id("login-password-input")).sendKeys("");
-        driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).submit();
-        Thread.sleep(3000);
-        String value = driver.findElement(By.id("error-box-wrapper")).getText();
-        System.out.println(value);
+        sleep(3000);
+        String value = login.getErrorMessage();
         assertEquals("Lütfen geçerli bir e-posta adresi giriniz.", value);
 
     }
@@ -58,14 +57,12 @@ public class LoginTestsBaseTestData extends BaseTest {
     public void LoginRequiredControlPassword() throws InterruptedException {
 
 
-        driver.findElement(By.id("onetrust-accept-btn-handler")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.id("login-email")).sendKeys(mail);
+        login.fillMail(mail)
+                .fillPassword("")
+                .clickLoginButton();
         //driver.findElement(By.id("login-password-input")).sendKeys("");
-        driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).submit();
-        Thread.sleep(3000);
-        String value = driver.findElement(By.cssSelector("[class='message']")).getText();
-        System.out.println(value);
+        sleep(3000);
+        String value = login.getErrorMessage();
         assertEquals("Lütfen şifrenizi giriniz.", value);
 
     }
@@ -74,8 +71,7 @@ public class LoginTestsBaseTestData extends BaseTest {
     public void MinMaxCharacterControl() throws InterruptedException {
 
 
-        driver.findElement(By.id("onetrust-accept-btn-handler")).click();
-        Thread.sleep(3000);
+        
         driver.findElement(By.id("login-email")).sendKeys("a");
         driver.findElement(By.id("login-password-input")).sendKeys("a");
         driver.findElement(By.cssSelector("[class='q-primary q-fluid q-button-medium q-button submit']")).submit();
