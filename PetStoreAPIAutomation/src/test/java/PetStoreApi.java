@@ -1,10 +1,13 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class PetStoreApi {
 
     @Test
+    @Description("Kullanıcı oluşturma")
     public void createUser(){
 
         String payLoad="{\n" +
@@ -23,13 +26,15 @@ public class PetStoreApi {
 
     }
     @Test
+    @Description("Kullanıcı bilgisi alma")
     public void getUserInfo(){
 
-        RestAssured.get("https://petstore.swagger.io/v2/user/alarcin1");
+        RestAssured.get("https://petstore.swagger.io/v2/user/alarcin2");
 
     }
 
     @Test
+    @Description("Kullanıcı bilgisi güncelleme")
     public void updateUserInfo(){
 
         String payLoad= "{\n" +
@@ -48,6 +53,7 @@ public class PetStoreApi {
     }
 
     @Test
+    @Description("Kullanıcı silme")
     public void deleteUser(){
 
 
@@ -57,6 +63,7 @@ public class PetStoreApi {
     }
 
     @Test
+    @Description("Login olma işlemi")
     public void loginUser(){
 
         String payLoad= "{\n" +
@@ -68,6 +75,7 @@ public class PetStoreApi {
 
     }
     @Test
+    @Description("Logout olma işlemi")
     public void logoutUser(){
 
 
